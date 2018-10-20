@@ -13,12 +13,18 @@ public class GuyControl : MonoBehaviour {
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rb2d = GetComponent<Rigidbody2D>();
-        //Input.gyro.enabled = true;
     }
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        if (Application.isEditor)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            float moveHorizontal = Input.acceleration.x;
+        }
 
 
         float xspeed = moveHorizontal * speed * Time.deltaTime;

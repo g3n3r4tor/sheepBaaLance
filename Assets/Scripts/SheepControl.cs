@@ -5,7 +5,7 @@ using UnityEngine;
 public class SheepControl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.name == "Grass")
+		if(col.gameObject.name == "Tilemap")
 		{
 			Application.LoadLevel(Application.loadedLevel);
 		}

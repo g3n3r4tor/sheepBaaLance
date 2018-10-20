@@ -18,7 +18,8 @@ public class GuyControl : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.acceleration.x;
 
 
         float xspeed = moveHorizontal * speed * Time.deltaTime;

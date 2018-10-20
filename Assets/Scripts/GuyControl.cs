@@ -17,13 +17,14 @@ public class GuyControl : MonoBehaviour {
 
     void FixedUpdate()
     {
+        float moveHorizontal = 0;
         if (Application.isEditor)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
+            moveHorizontal = Input.GetAxis("Horizontal");
         }
         else
         {
-            float moveHorizontal = Input.acceleration.x;
+            moveHorizontal = Input.acceleration.x;
         }
 
 

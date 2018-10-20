@@ -20,7 +20,6 @@ public class GuyControl : MonoBehaviour {
         //float moveHorizontal = Input.GetAxis("Horizontal");
         float moveHorizontal = Input.acceleration.x;
 
-
         float xspeed = moveHorizontal * speed * Time.deltaTime;
 
         if(xspeed > maxXSpeed)

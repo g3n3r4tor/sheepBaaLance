@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4421008040193418}
   - component: {fileID: 212183421707632110}
   m_Layer: 0
-  m_Name: Lance 2
+  m_Name: Jianfei's Lance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

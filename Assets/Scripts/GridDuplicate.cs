@@ -13,7 +13,7 @@ public class GridDuplicate : MonoBehaviour {
         if (other.name == "Alpaca")
         {
             xPos = other.attachedRigidbody.position.x;
-            Debug.Log("Entered through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
+           // Debug.Log("Entered through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -40,7 +40,7 @@ public class GridDuplicate : MonoBehaviour {
             }
 
 
-            Debug.Log("Exited through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
+            //Debug.Log("Exited through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
         }
     }
     void MoveBackground(bool leftside)

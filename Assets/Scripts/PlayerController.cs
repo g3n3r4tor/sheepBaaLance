@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D player;
 
+	public Camera camera;
 	public float speed;
 	public float muliplier = 1;
 
@@ -29,5 +30,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Doesn't work since it does not recompute the Relative Joint
         // transform.Translate(moveHorizontal * speed * muliplier * Time.deltaTime, 0, 0);
+
+		// Update the Camera view rect
 	}
 }

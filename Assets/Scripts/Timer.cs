@@ -6,15 +6,20 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
 	private float lifeTime = 0.0f;		// Total seconds elapsed since Sheep has been in the game
-	private Text displayTest;
+	private Text displayText;
 
 	// Use this for initialization
 	void Start () {
-		displayTest = GetComponent<Text>();
+		displayText = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		lifeTime += Time.deltaTime;
+		displayText.text = FormatTime();
+	}
+
+	string FormatTime() {
+		return lifeTime.ToString("F2") + "s";
 	}
 }

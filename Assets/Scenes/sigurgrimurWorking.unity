@@ -161,6 +161,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &381386210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381386212}
+  - component: {fileID: 381386211}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &381386211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381386210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a590ff3f0a996a3479f33751d3ed8cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &381386212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381386210}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.33223128, y: 2.8101568, z: 0}
+  m_LocalScale: {x: 0.4666198, y: 0.08330062, z: 0.76470417}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474638202 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010051298990, guid: a4c030fb9c42547149d12e675cafdf95,
@@ -1158,6 +1198,18 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212606656939798750, guid: 8c3e1198d4d4abe4e814619640b6ccc0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94d102cc027a4dc449df49fd6933d613,
+        type: 3}
+    - target: {fileID: 212361269078278822, guid: 8c3e1198d4d4abe4e814619640b6ccc0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94d102cc027a4dc449df49fd6933d613,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 61420039476553242, guid: 8c3e1198d4d4abe4e814619640b6ccc0, type: 2}
     - {fileID: 50625064784227024, guid: 8c3e1198d4d4abe4e814619640b6ccc0, type: 2}

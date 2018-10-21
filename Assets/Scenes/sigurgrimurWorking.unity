@@ -194,9 +194,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 474638202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341b0deb8651e4b84a3970da255f3e50, type: 3}
+  m_Script: {fileID: 11500000, guid: f3d6e1405f1984ed38ddba919764ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  maxXSpeed: 20
 --- !u!212 &474638205
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -885,7 +887,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2044204073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3696867132524aaa8dd9b26e6dddaef, type: 3}
+  m_Script: {fileID: 11500000, guid: 983bfd7cb6873468aaf1573b0b90b01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &2044204075

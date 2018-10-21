@@ -1483,7 +1483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011778199602, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.01
+      value: -2.89
       objectReference: {fileID: 0}
     - target: {fileID: 4000011778199602, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1509,6 +1509,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4000012829187128, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012829187128, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
   m_IsPrefabAsset: 0
@@ -1529,7 +1537,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08986765, y: 0.87870586}
+  m_Offset: {x: 0.08718574, y: -0.27248895}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1540,7 +1548,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2596179, y: 1.6790001}
+  m_Size: {x: 1.2918093, y: 1.6628597}
   m_EdgeRadius: 0
 --- !u!212 &2008427694
 SpriteRenderer:
@@ -1599,7 +1607,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2.1148987
+  m_Mass: 2.1480975
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
@@ -1688,5 +1696,5 @@ RelativeJoint2D:
   m_MaxTorque: 15
   m_CorrectionScale: 0.8
   m_AutoConfigureOffset: 1
-  m_LinearOffset: {x: 0.02000003, y: -3.5200002}
+  m_LinearOffset: {x: 0.02000003, y: -2.4}
   m_AngularOffset: 0

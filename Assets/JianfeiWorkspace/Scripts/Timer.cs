@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour {
 		gameoverController = gameoverUI.GetComponent<GameOverController>();
 		gameoverUI.gameObject.SetActive(false);
 
-		sheep.GetComponent<SheepAI>().FloorCollided += OnFloorCollided;
+		sheep.GetComponent<SheepControl>().FloorCollided += OnFloorCollided;
 	}
 
 	void OnFloorCollided(object sender, EventArgs e) {

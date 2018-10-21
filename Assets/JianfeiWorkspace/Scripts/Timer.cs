@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour {
 	private float lifeTime = 0.0f;		// Total seconds elapsed since Sheep has been in the game
 	private Text displayText;
 	private bool isAlive = true;
+	private bool isShown = false;
 	private GameOverController gameoverController;
 	
 	public GameObject sheep;
@@ -33,8 +34,13 @@ public class Timer : MonoBehaviour {
 			lifeTime += Time.deltaTime;
 			displayText.text = FormatTime();
 		}
-		else {
+		else if (!isShown) {
 			gameoverUI.gameObject.SetActive(true);
+			isShown = true;
+			// The game objects in the gameoeverUI are all null until the next Update call so setting
+			// the text in this loop will raise NullException
+		}
+		else {
 			gameoverController.Show(FormatTime());
 			gameObject.SetActive(false);
 		}

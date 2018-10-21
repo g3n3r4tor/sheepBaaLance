@@ -7,26 +7,23 @@ using TMPro;
 public class GameOverController : MonoBehaviour {
 
 	private Image image;
-
-	// public RectTransform panel;
 	private TextMeshProUGUI highscore;
 
 	// Use this for initialization
 	void Start () {
-		image = GetComponentInChildren<Image>();
-		// highscore = GetComponentInChildren<Text>();
 		highscore = GetComponentInChildren<TextMeshProUGUI>();
+		highscore.SetText("");
 	}
 
 	public void Show(string seconds) {
-		image.fillAmount = 1;
-		// highscore.text = "Your Score: " + seconds;
 		highscore.SetText("Your Score: " + seconds);
 	}
 
-	public void Hide() {
-		image.fillAmount = 0;
-		// highscore.text = "";
-		highscore.SetText("");
+	public void Restart() {
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void MainMenu() {
+
 	}
 }

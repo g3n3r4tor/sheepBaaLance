@@ -9,12 +9,16 @@ public class Timer : MonoBehaviour {
 	private float lifeTime = 0.0f;		// Total seconds elapsed since Sheep has been in the game
 	private Text displayText;
 	private bool isAlive = true;
+	private GameOverController gameoverController;
 	
 	public GameObject sheep;
+	public Canvas gameoverUI;
 
 	// Use this for initialization
 	void Start () {
 		displayText = GetComponent<Text>();
+		gameoverController = gameoverUI.GetComponent<GameOverController>();
+		gameoverUI.gameObject.SetActive(false);
 
 		sheep.GetComponent<SheepAI>().FloorCollided += OnFloorCollided;
 	}
@@ -28,6 +32,11 @@ public class Timer : MonoBehaviour {
 		if (isAlive) {
 			lifeTime += Time.deltaTime;
 			displayText.text = FormatTime();
+		}
+		else {
+			gameoverUI.gameObject.SetActive(true);
+			gameoverController.Show(FormatTime());
+			gameObject.SetActive(false);
 		}
 	}
 

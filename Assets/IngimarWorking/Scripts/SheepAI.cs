@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepAI : MonoBehaviour {
+namespace IngimarWorking
+{
+	public class SheepAI : MonoBehaviour {
 
-	public float MadnessTimer;			// The threshold in seconds when the sheep starts going crazy
+		public float MadnessTimer;			// The threshold in seconds when the sheep starts going crazy
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		void Start () {
+		}
+		void Update () {
+		}
 	}
 }

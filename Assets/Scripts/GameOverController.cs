@@ -18,12 +18,4 @@ public class GameOverController : MonoBehaviour {
 	public void Show(string seconds) {
 		highscore.SetText("Your Score: " + seconds);
 	}
-
-	public void Restart() {
-		Application.LoadLevel(Application.loadedLevel);
-	}
-
-	public void MainMenu() {
-
-	}
 }

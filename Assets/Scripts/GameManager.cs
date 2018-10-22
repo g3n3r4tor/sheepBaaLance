@@ -20,6 +20,29 @@ public class TimeScoreArg : EventArgs
 }
 
 
+public struct PosRot {
+	private Vector3 pos;
+	private Quaternion rot;
+
+	public static PosRot Create(GameObject o)
+	{
+		var result = new PosRot();
+		result.pos = o.transform.position;
+		result.rot = o.transform.rotation;
+		return result;
+	}
+
+	public void Apply(GameObject o)
+	{
+		o.transform.position = pos;
+		o.transform.rotation = rot;
+		var rb = o.GetComponent<Rigidbody>();
+		if(rb){
+			rb.velocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
+		}
+	}
+}
 
 public class GameManager : MonoBehaviour {
 
@@ -65,12 +88,17 @@ public class GameManager : MonoBehaviour {
 
 		gameCanvas =  GameObject.Find("Game Canvas");
 		endCanvas = GameObject.Find("End Canvas");
+		endCanvas.gameObject.SetActive(false);
+
+		//Lance =  GameObject.Find("Lance");
+		//originalLancePos = Lance.transform.position;
+		//originalLanceRot = Lance.transform.rotation;
 
 		Guy =  GameObject.Find("Alpaca");
-		Guy =  GameObject.Find("Lance");
 		originalGuyPos = Guy.transform.position;
-		Sheep = GameObject.Find("sheep");
-		originalSheepPos = Sheep.transform.position;
+		//Sheep = GameObject.Find("sheep");
+		//originalSheepPos = Sheep.transform.position;
+		//originalSheepRot = Sheep.transform.rotation;
         Timer = GameObject.Find("Timer");
 		Timer.GetComponent<Timer>().onDead += onDead;
 
@@ -98,7 +126,6 @@ public class GameManager : MonoBehaviour {
 		{
 			if(button.name == "Restart Button"){
 				Button b = button.GetComponent<Button>();
-				Debug.Log("Adding");
 				b.onClick.AddListener(RestartGame);
 			}
 			if(button.name == "Menu Button"){
@@ -135,7 +162,8 @@ public class GameManager : MonoBehaviour {
 
 		// Guy update
 		{
-			float xspeed = Input.acceleration.x * speed * Time.deltaTime;
+			float xspeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+			//float xspeed = Input.acceleration.x * speed * Time.deltaTime;
 
 			if(xspeed > maxXSpeed)
 				xspeed = maxXSpeed;

@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 676365690}
   - component: {fileID: 676365689}
   - component: {fileID: 676365688}
+  - component: {fileID: 676365691}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1021,6 +1022,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676365691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676365687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ef5f6f307464fdfbb26cd3a167b240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1001 &801195861
 Prefab:
   m_ObjectHideFlags: 0
@@ -1103,6 +1116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a590ff3f0a996a3479f33751d3ed8cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lance: {fileID: 0}
+  Guy: {fileID: 0}
+  Sheep: {fileID: 0}
+  gameCanvas: {fileID: 0}
+  endCanvas: {fileID: 0}
+  Timer: {fileID: 0}
   maxXSpeed: 20
   speed: 5
   HighscoreTexts: []
@@ -1389,7 +1408,7 @@ HingeJoint2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333962961}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 69843812}
@@ -1426,6 +1445,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!254 &1333962964
+RelativeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1333962961}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 69843812}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_MaxForce: 500
+  m_MaxTorque: 15
+  m_CorrectionScale: 0.8
+  m_AutoConfigureOffset: 0
+  m_LinearOffset: {x: 0.87, y: -3.52}
+  m_AngularOffset: 0
 --- !u!1 &1466315518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MadnessTimer: 0
+  floors: []
 --- !u!1 &1817026185
 GameObject:
   m_ObjectHideFlags: 0

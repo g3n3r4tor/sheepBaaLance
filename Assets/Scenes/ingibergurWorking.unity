@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4821813318857522, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
@@ -295,8 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d6e1405f1984ed38ddba919764ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxXSpeed: 20
 --- !u!212 &474638205
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -405,7 +403,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011778199602, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c030fb9c42547149d12e675cafdf95, type: 2}
@@ -590,6 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983bfd7cb6873468aaf1573b0b90b01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MadnessTimer: 0
+  floors: []
 --- !u!212 &2044204075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -693,7 +693,7 @@ Transform:
   m_Children:
   - {fileID: 1288792643}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066826055
 GameObject:
@@ -822,7 +822,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4663384372901810, guid: 8c3e1198d4d4abe4e814619640b6ccc0, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1733837232796904, guid: 8c3e1198d4d4abe4e814619640b6ccc0, type: 2}
       propertyPath: m_Name

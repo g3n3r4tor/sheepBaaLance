@@ -13,4 +13,19 @@ public class GuyControl : MonoBehaviour {
             created = true;
         }
     }
+
+
+    void Update()
+    {
+		float xspeed = Input.GetAxis("Horizontal");
+
+		if(xspeed > 20)
+			xspeed = 20;
+
+		if(xspeed < -20)
+			xspeed = -20;
+
+
+		transform.Translate(xspeed, 0, 0);
+	}
 }

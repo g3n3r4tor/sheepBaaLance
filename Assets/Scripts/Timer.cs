@@ -33,7 +33,6 @@ public class Timer : MonoBehaviour {
 
 	void OnFloorCollided(object sender, EventArgs e) {
 		isAlive = false;
-
 	}
 
 	// Update is called once per frame

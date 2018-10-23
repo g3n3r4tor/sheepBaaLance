@@ -18,8 +18,6 @@ public class Timer : MonoBehaviour {
 
 	void Awake()
     {
-    	var canvasObj = GameObject.Find("End Canvas");
-    	gameoverUI = canvasObj.GetComponent<Canvas>();
     	sheep = GameObject.Find("sheep");
 		sheep.GetComponent<SheepControl>().FloorCollided += OnFloorCollided;
     }

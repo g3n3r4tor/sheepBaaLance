@@ -46,10 +46,7 @@ public struct PosRot {
 
 public class GameManager : MonoBehaviour {
 
-	public static GameManager Instance;
-	private static bool created = false;
-
-	private static int test;
+	private bool loaded = false;
 	public GameObject Lance;
 	private static Vector3 originalLancePos;
 	private static Quaternion originalLanceRot;
@@ -62,48 +59,35 @@ public class GameManager : MonoBehaviour {
 	public GameObject endCanvas;
 	public GameObject Timer;
 
+	public Rigidbody2D player;
+
 	public float maxXSpeed = 20;
 	public float speed = 5;
 
-	public List<Highscore> Highscores;
-	public List<Text> HighscoreTexts;
+	public List<Highscore> Highscores = new List<Highscore>();
+	public List<Text> HighscoreTexts = new List<Text>();
 
-    void Awake()
-    {
-    	if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy (gameObject);
-        }
-    }
+	void Awake()
+	{
+	}
+
 
 	// Use this for initialization
 	void Start () {
-		Highscores = new List<Highscore>();
-		HighscoreTexts = new List<Text>();
-
 		gameCanvas =  GameObject.Find("Game Canvas");
 		endCanvas = GameObject.Find("End Canvas");
-		endCanvas.gameObject.SetActive(false);
 
-		//Lance =  GameObject.Find("Lance");
-		//originalLancePos = Lance.transform.position;
-		//originalLanceRot = Lance.transform.rotation;
-
+		Lance =  GameObject.Find("Lance");
 		Guy =  GameObject.Find("Alpaca");
-		originalGuyPos = Guy.transform.position;
-		//Sheep = GameObject.Find("sheep");
-		//originalSheepPos = Sheep.transform.position;
-		//originalSheepRot = Sheep.transform.rotation;
+		Sheep = GameObject.Find("sheep");
+
+		player = Guy.GetComponent<Rigidbody2D>();
+
         Timer = GameObject.Find("Timer");
 		Timer.GetComponent<Timer>().onDead += onDead;
 
         Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-		for (var i = 0; i < 4; i++)
+		for (var i = 0; i < 5; i++)
 		{
 
 			GameObject obj = new GameObject("Highscore"+i);
@@ -118,21 +102,10 @@ public class GameManager : MonoBehaviour {
      		text.material = ArialFont.material;
      		text.color = Color.black;
 
-     		Instance.HighscoreTexts.Add(text);
+     		HighscoreTexts.Add(text);
 		}
-
-		var buttons = endCanvas.GetComponentsInChildren<Button>();
-		foreach(var button in buttons)
-		{
-			if(button.name == "Restart Button"){
-				Button b = button.GetComponent<Button>();
-				b.onClick.AddListener(RestartGame);
-			}
-			if(button.name == "Menu Button"){
-				Button b = button.GetComponent<Button>();
-				b.onClick.AddListener(MainMenu);
-			}
-		}
+		LoadHighScore();
+		UpdateHighScore(Highscores);
 	}
 
 	void onDead(object sender, TimeScoreArg e)
@@ -143,6 +116,12 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+
+		//if(!loaded)
+		//{
+		//	loaded = true;
+		//	LoadHighScore();
+		//}
 		//Game Update
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
@@ -162,17 +141,17 @@ public class GameManager : MonoBehaviour {
 
 		// Guy update
 		{
-			float xspeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+			float xspeed = Input.GetAxis("Horizontal");
 			//float xspeed = Input.acceleration.x * speed * Time.deltaTime;
 
-			if(xspeed > maxXSpeed)
-				xspeed = maxXSpeed;
+			//if(xspeed > maxXSpeed)
+			//	xspeed = maxXSpeed;
+			//if(xspeed < -maxXSpeed)
+			//	xspeed = -maxXSpeed;
 
-			if(xspeed < -maxXSpeed)
-				xspeed = -maxXSpeed;
 
-
-			Guy.transform.Translate(xspeed, 0, 0);
+			player.AddForce(new Vector2(xspeed,0)*100);
+			//Guy.transform.Translate(xspeed, 0, 0);
 		}
 	}
 
@@ -188,25 +167,26 @@ public class GameManager : MonoBehaviour {
 
 	public void RestartGame()
 	{
-		endCanvas.gameObject.SetActive(false);
 
-		Guy.transform.position = originalGuyPos;
-		var rb = Guy.GetComponent<Rigidbody>();
-		rb.velocity = Vector3.zero;
-		rb.angularVelocity = Vector3.zero;
+//		Guy.transform.position = originalGuyPos;
+//		var rb = Guy.GetComponent<Rigidbody>();
+//		rb.velocity = Vector3.zero;
+//		rb.angularVelocity = Vector3.zero;
+//
+//		Sheep.transform.SetPositionAndRotation(originalSheepPos, originalSheepRot);
+//		rb = Sheep.GetComponent<Rigidbody>();
+//		rb.velocity = Vector3.zero;
+//		rb.angularVelocity = Vector3.zero;
+//
+//		rb = Lance.GetComponent<Rigidbody>();
+//		rb.velocity = Vector3.zero;
+//		rb.angularVelocity = Vector3.zero;
+//		Lance.transform.SetPositionAndRotation(originalLancePos, originalLanceRot);
+		//endCanvas.gameObject.SetActive(false);
 
-		Sheep.transform.SetPositionAndRotation(originalSheepPos, originalSheepRot);
-		rb = Sheep.GetComponent<Rigidbody>();
-		rb.velocity = Vector3.zero;
-		rb.angularVelocity = Vector3.zero;
-
-		rb = Lance.GetComponent<Rigidbody>();
-		rb.velocity = Vector3.zero;
-		rb.angularVelocity = Vector3.zero;
-		Lance.transform.SetPositionAndRotation(originalLancePos, originalLanceRot);
-		//Scene scene = SceneManager.GetActiveScene();
-		//SceneManager.LoadScene(scene.buildIndex);
-		ResumeGame();
+		SaveHighScore();
+		Scene scene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(scene.buildIndex);
 	}
 
 	public void MainMenu()
@@ -235,13 +215,37 @@ public class GameManager : MonoBehaviour {
 		Highscore h = new Highscore();
 		h.text = time.ToString("F2") + "s";
 		h.score = Mathf.RoundToInt(time*100);
-		Instance.Highscores.Add(h);
+		Highscores.Add(h);
 
-		//Highscores = Highscores.OrderBy(o=>o.score).ToList();
+		Highscores = Highscores.OrderByDescending(o=>o.score).ToList();
 
-		//if(Highscores.Count > 5)
-		//	Highscores.RemoveAt(Highscores.Count - 1);
+		if(Highscores.Count > 5)
+			Highscores.RemoveAt(Highscores.Count - 1);
 
-		UpdateHighScore(Instance.Highscores);
+		UpdateHighScore(Highscores);
+	}
+
+	public void SaveHighScore()
+	{
+
+		PlayerPrefs.SetInt("hcount", Highscores.Count);
+		for (var i = 0; i < Highscores.Count; i++)
+		{
+			var s = Highscores[i];
+			PlayerPrefs.SetInt("hscore"+i, s.score);
+			PlayerPrefs.SetString("htext"+i, s.text);
+		}
+	}
+
+	public void LoadHighScore()
+	{
+		var count = PlayerPrefs.GetInt("hcount");
+		for (var i = 0; i < count; i++)
+		{
+			Highscore h = new Highscore();
+			h.text = PlayerPrefs.GetString("htext"+i);
+			h.score = PlayerPrefs.GetInt("hscore"+i);
+			Highscores.Add(h);
+		}
 	}
 }

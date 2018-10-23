@@ -547,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &230593783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 230593782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16fd7b071f87612468b2f19c8fb61a68, type: 3}
+  m_Script: {fileID: 11500000, guid: bdb86a92da7054e2d98fbfc1d5dba378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &230593784
@@ -602,7 +602,7 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230593782}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
@@ -1122,8 +1122,9 @@ MonoBehaviour:
   gameCanvas: {fileID: 0}
   endCanvas: {fileID: 0}
   Timer: {fileID: 0}
+  player: {fileID: 0}
   maxXSpeed: 20
-  speed: 5
+  speed: 50
   HighscoreTexts: []
 --- !u!1001 &864388135
 Prefab:
@@ -1168,7 +1169,8 @@ Prefab:
       propertyPath: m_Name
       value: Tilemap1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114505944915551192, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &886060877
@@ -1300,7 +1302,8 @@ Prefab:
       propertyPath: m_Name
       value: Tilemap2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114505944915551192, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1205868813 stripped
@@ -1352,7 +1355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288905307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5935e440663c14c91909ba92a0a43f1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c7432a875f374e3b863f0e415f59c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sheep: {fileID: 1570264061}
@@ -1460,7 +1463,7 @@ RelativeJoint2D:
   m_MaxForce: 500
   m_MaxTorque: 15
   m_CorrectionScale: 0.8
-  m_AutoConfigureOffset: 0
+  m_AutoConfigureOffset: 1
   m_LinearOffset: {x: 0.87, y: -3.52}
   m_AngularOffset: 0
 --- !u!1 &1466315518
@@ -1794,7 +1797,8 @@ Prefab:
       propertyPath: m_Name
       value: Tilemap3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114505944915551192, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ebfe1560fc545214aa9132247fc18c56, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1976281641

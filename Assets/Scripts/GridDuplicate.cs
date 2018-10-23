@@ -5,8 +5,6 @@ using UnityEngine;
 public class GridDuplicate : MonoBehaviour {
 
     // Use this for initialization
-    public bool left;
-    public int backgroundnr;
     public static int bnr = 1;
 
     bool cameInFromRight = false;

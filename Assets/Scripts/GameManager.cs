@@ -46,7 +46,6 @@ public struct PosRot {
 
 public class GameManager : MonoBehaviour {
 
-	private bool loaded = false;
 	public GameObject Lance;
 	private static Vector3 originalLancePos;
 	private static Quaternion originalLanceRot;
@@ -116,74 +115,20 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-
-		//if(!loaded)
-		//{
-		//	loaded = true;
-		//	LoadHighScore();
-		//}
-		//Game Update
-		{
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				PauseGame();
-			}
-			else if(Input.GetKeyUp(KeyCode.Space))
-			{
-				ResumeGame();
-			}
-
-			if(Input.GetKeyDown(KeyCode.R))
-			{
-				RestartGame();
-			}
-		}
-
 		// Guy update
 		{
-			float xspeed = Input.GetAxis("Horizontal");
+			float xspeed = Input.acceleration.x;
+			//float xspeed = Input.GetAxis("Horizontal");
 			//float xspeed = Input.acceleration.x * speed * Time.deltaTime;
 
-			//if(xspeed > maxXSpeed)
-			//	xspeed = maxXSpeed;
-			//if(xspeed < -maxXSpeed)
-			//	xspeed = -maxXSpeed;
 
-
-			player.AddForce(new Vector2(xspeed,0)*100);
+			player.AddForce(new Vector2(xspeed,0)*speed);
 			//Guy.transform.Translate(xspeed, 0, 0);
 		}
 	}
 
-	public void PauseGame()
-	{
-		Time.timeScale = 0;
-	}
-
-	public void ResumeGame()
-	{
-		Time.timeScale = 1;
-	}
-
 	public void RestartGame()
 	{
-
-//		Guy.transform.position = originalGuyPos;
-//		var rb = Guy.GetComponent<Rigidbody>();
-//		rb.velocity = Vector3.zero;
-//		rb.angularVelocity = Vector3.zero;
-//
-//		Sheep.transform.SetPositionAndRotation(originalSheepPos, originalSheepRot);
-//		rb = Sheep.GetComponent<Rigidbody>();
-//		rb.velocity = Vector3.zero;
-//		rb.angularVelocity = Vector3.zero;
-//
-//		rb = Lance.GetComponent<Rigidbody>();
-//		rb.velocity = Vector3.zero;
-//		rb.angularVelocity = Vector3.zero;
-//		Lance.transform.SetPositionAndRotation(originalLancePos, originalLanceRot);
-		//endCanvas.gameObject.SetActive(false);
-
 		SaveHighScore();
 		Scene scene = SceneManager.GetActiveScene();
 		SceneManager.LoadScene(scene.buildIndex);

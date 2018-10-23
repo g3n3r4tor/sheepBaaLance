@@ -16,9 +16,14 @@ public class SheepControl : MonoBehaviour {
 		floors.Add(GameObject.Find("Tilemap1").GetComponent<Tilemap>());
 		floors.Add(GameObject.Find("Tilemap2").GetComponent<Tilemap>());
 		floors.Add(GameObject.Find("Tilemap3").GetComponent<Tilemap>());
+        MadnessTimer = 0.1f;
 	}
+    private void Update()
+    {
+        StartCoroutine(MoveSheep());
+    }
 
-	void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
 	{
 		foreach(var floor in floors)
 		{
@@ -31,4 +36,11 @@ public class SheepControl : MonoBehaviour {
 			}
 		}
 	}
+    private IEnumerator MoveSheep()
+    {
+        
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-1f*MadnessTimer,1f*MadnessTimer),0));
+        yield return new WaitForSeconds(2);
+        MadnessTimer+=0.1f;
+    }
 }

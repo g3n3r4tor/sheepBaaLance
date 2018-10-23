@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ControllingCameraAspectScript : MonoBehaviour
 {
+    private Camera camera;
+    private Vector3 distanceToTarget;
+
+    public GameObject target;           // The target GameObject to focus (Can be null)
 
     // Use this for initialization
     void Start()
@@ -20,7 +24,7 @@ public class ControllingCameraAspectScript : MonoBehaviour
         float scaleheight = windowaspect / targetaspect;
 
         // obtain camera component so we can modify its viewport
-        Camera camera = GetComponent<Camera>();
+        camera = GetComponent<Camera>();
 
         // if scaled height is less than current height, add letterbox
         if (scaleheight < 1.0f)
@@ -47,6 +51,15 @@ public class ControllingCameraAspectScript : MonoBehaviour
 
             camera.rect = rect;
         }
+
+        if (target != null) {
+            distanceToTarget = target.transform.position - camera.transform.position;
+        }
     }
 
+    void Update() {
+        if (target != null) {
+            camera.transform.position = target.transform.position - distanceToTarget;
+        }
+    }
 }

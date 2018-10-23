@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: 7666ffdbf421f4741a9669026e457710
+  - enabled: 0
+    path: Assets/JianfeiWorkspace/Jianfei's Scene.unity
+    guid: bb853f269fc207345b58c9ea2d6e51e8
+  - enabled: 1
+    path: Assets/Master/MainMenu.unity
+    guid: 7af8c0eb21eaa41dcac1614d41a5b3b3
+  - enabled: 1
+    path: Assets/Master/Master.unity
+    guid: 3a7e6097e225540d2a81ee896cafe920
   m_configObjects: {}

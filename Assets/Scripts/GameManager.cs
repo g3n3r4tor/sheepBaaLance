@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour {
 	{
 		// Guy update
 		{
-			float xspeed = Input.acceleration.x;
-			//float xspeed = Input.GetAxis("Horizontal");
+			//float xspeed = Input.acceleration.x;
+			float xspeed = Input.GetAxis("Horizontal");
 			//float xspeed = Input.acceleration.x * speed * Time.deltaTime;
 
 
@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour {
 
 	public void RestartGame()
 	{
+        GridDuplicate.bnr = 1;
 		SaveHighScore();
 		Scene scene = SceneManager.GetActiveScene();
 		SceneManager.LoadScene(scene.buildIndex);
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour {
 
 	public void MainMenu()
 	{
+        GridDuplicate.bnr = 1;
 		SceneManager.LoadScene("MainMenu");
 	}
 
@@ -147,7 +149,7 @@ public class GameManager : MonoBehaviour {
 
 			if(scores.Count > i)
 			{
-				Debug.Log("Adding Highscore");
+				//Debug.Log("Adding Highscore");
 				var s = scores[i];
 
 				h.text = (i+1)+". " + s.text;

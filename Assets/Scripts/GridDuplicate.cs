@@ -41,6 +41,7 @@ public class GridDuplicate : MonoBehaviour {
 
     void MoveBackground(bool leftside)
     {
+        Debug.Log(bnr);
         GameObject toMove;
 
         int[] indexListL = {2,3,1};

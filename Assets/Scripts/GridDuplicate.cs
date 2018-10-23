@@ -7,98 +7,56 @@ public class GridDuplicate : MonoBehaviour {
     // Use this for initialization
     public bool left;
     public int backgroundnr;
-    float xPos;
+    public static int bnr = 1;
+
+    bool cameInFromRight = false;
+
 	void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Alpaca")
         {
-            xPos = other.attachedRigidbody.position.x;
-           // Debug.Log("Entered through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
+            cameInFromRight = transform.position.x < other.attachedRigidbody.position.x;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.name == "Alpaca")
         {
+            var wentOutRight = transform.position.x < other.attachedRigidbody.position.x;
 
-            float currPos = other.attachedRigidbody.position.x;
-            if (left)
+            //Debug.Log("Out "+name+" oX:"+other.attachedRigidbody.position.x+" x:"+transform.position.x+" From right "+cameInFromRight);
+            if(cameInFromRight && !wentOutRight)
             {
-                if (currPos < xPos)
-                {
-                    //Move Rightmost background to the left
-                    MoveBackground(true);
-                }
+                Debug.Log("Going Right");
+                bnr--;
+                MoveBackground(true);
             }
-            else
+            else if(!cameInFromRight && wentOutRight)
             {
-                if (currPos > xPos)
-                {
-                    //move leftmost background to the right
-                    MoveBackground(false);
-                }
+                Debug.Log("Going Left");
+                bnr++;
+                MoveBackground(false);
             }
-
-
-            //Debug.Log("Exited through xPos: + " + xPos + ", Left: " + left + ", backgroundNR+ " + backgroundnr);
         }
     }
+
+
     void MoveBackground(bool leftside)
     {
         GameObject toMove;
-        if (leftside)
+
+        int[] indexListL = {2,3,1};
+        int[] indexListR = {3,1,2};
+        int number = leftside ? indexListL[(bnr%3 + 3)%3] : indexListR[((bnr+1)%3 + 3)%3];
+
+        toMove = GameObject.Find("Background"+number);
+
+        if (toMove != null)
         {
-            //Move rightmost to left
-            switch (backgroundnr)
-            {
-                case 1:
-                    //Move nr 2
-                    toMove = GameObject.Find("Background2");
-                    break;
-                case 2:
-                    //Move nr 3
-                    toMove = GameObject.Find("Background3");
-                    break;
-                case 3:
-                    //Move nr 1
-                    toMove = GameObject.Find("Background1");
-                    break;
-                default:
-                    toMove = null;
-                    break;
-            }
-            if (toMove != null)
-            {
-                toMove.transform.position = new Vector2(toMove.transform.position.x - 69, 0.5f);
-            }
-            else { Debug.Log("null"); }
+            int moveX = 69;
+            if(leftside)moveX = -moveX;
+            toMove.transform.position = new Vector2(toMove.transform.position.x + moveX, 0.5f);
         }
-        else
-        {
-            //move leftmost to right
-            switch (backgroundnr)
-            {
-                case 1:
-                    //Move nr 3
-                    toMove = GameObject.Find("Background3");
-                    break;
-                case 2:
-                    //move nr 1
-                    toMove = GameObject.Find("Background1");
-                    break;
-                case 3:
-                    //move nr 2
-                    toMove = GameObject.Find("Background2");
-                    break;
-                default:
-                    toMove = null;
-                    break;
-            }
-            if (toMove != null)
-            {
-                toMove.transform.position = new Vector2(toMove.transform.position.x + 69, 0.5f);
-            }
-            else { Debug.Log("null"); }
-        }
+        else { Debug.Log("null"); }
     }
 }
